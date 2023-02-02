@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1093468809941",
+    "project_id": "mycart-c745d",
+    "storage_bucket": "mycart-c745d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093468809941:android:ca7c7d659bf2a00f04105c",
+        "android_client_info": {
+          "package_name": "com.agromother.mycart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093468809941-5gelggc4bdjv0tmlmqleksurong3lvsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfSk0SQE4UT0EecTF0A_mYeCgcQEdIS6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093468809941-5gelggc4bdjv0tmlmqleksurong3lvsr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1093468809941-rqp56jijr3965u49r8uhld86o88gvr2f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.agromother.mycart"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
