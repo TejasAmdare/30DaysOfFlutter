@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mycart/views/register_view.dart';
@@ -5,7 +7,6 @@ import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:mycart/views/login_view.dart';
 import 'views/verify_email.dart';
-import 'dart:developer' as devtools show log;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,7 @@ void main() async {
       routes: {
         '/login/': (context) => const LoginView(),
         '/register/': (context) => const RegesterView(),
+        '/notes/': (context) => const NotesView(),
       },
     ),
   );
