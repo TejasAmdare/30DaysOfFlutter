@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
+import 'package:mycart/constants/routes.dart';
+
 class RegesterView extends StatefulWidget {
   const RegesterView({super.key});
 
@@ -79,7 +81,7 @@ class _RegesterViewState extends State<RegesterView> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                '/login/',
+                logineRoute,
                 (route) => false,
               );
             },

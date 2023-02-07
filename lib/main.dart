@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mycart/constants/routes.dart';
 import 'package:mycart/views/register_view.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +23,10 @@ void main() async {
       ),
       home: const HomePage(),
       routes: {
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegesterView(),
-        '/notes/': (context) => const NotesView(),
+        logineRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegesterView(),
+        notesRoute: (context) => const NotesView(),
+        verifyRoute: (context) => const VerifyEmailView(),
       },
     ),
   );
@@ -85,7 +86,7 @@ class _NotesViewState extends State<NotesView> {
                   if (shouldLogout) {
                     await FirebaseAuth.instance.signOut();
                     Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/login/', (_) => false);
+                        .pushNamedAndRemoveUntil(logineRoute, (_) => false);
                   }
                   break;
               }
