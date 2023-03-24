@@ -32,7 +32,6 @@ void main() async {
   );
 }
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -46,14 +45,14 @@ class HomePage extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             final user = FirebaseAuth.instance.currentUser;
-            if (user != null) {
-              if (user.emailVerified) {
+            if (user == null) {
+              return const LoginView();
+            } else {
+              if (user.emailVerified == true) {
                 return const NotesView();
               } else {
                 return const VerifyEmailView();
               }
-            } else {
-              return const LoginView();
             }
           default:
             return const CircularProgressIndicator();

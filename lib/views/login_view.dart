@@ -1,10 +1,7 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'dart:developer' as devtools show log;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mycart/constants/routes.dart';
+import 'package:mycart/utilities/show_utility_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -70,10 +67,26 @@ class _LoginViewState extends State<LoginView> {
                 );
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
-                  devtools.log('User not found');
+                  await ShowErrorDialog(
+                    context,
+                    "User Not Found",
+                  );
                 } else if (e.code == 'wrong-password') {
-                  devtools.log('Wrong Password');
+                  await ShowErrorDialog(
+                    context,
+                    "Wrong credentials",
+                  );
+                } else {
+                  await ShowErrorDialog(
+                    context,
+                    "Error: ${e.code}",
+                  );
                 }
+              } catch (e) {
+                await ShowErrorDialog(
+                  context,
+                  e.toString(),
+                );
               }
             },
             child: const Text('Login'),
