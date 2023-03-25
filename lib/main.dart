@@ -1,11 +1,14 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mycart/constants/routes.dart';
-import 'package:mycart/views/register_view.dart';
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
+
+import 'package:mycart/constants/color_code.dart';
+import 'package:mycart/constants/routes.dart';
 import 'package:mycart/views/login_view.dart';
+import 'package:mycart/views/register_view.dart';
+
+import 'firebase_options.dart';
 import 'views/verify_email.dart';
 
 void main() async {
@@ -19,14 +22,14 @@ void main() async {
     MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: const HomePage(),
       routes: {
         logineRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegesterView(),
         notesRoute: (context) => const NotesView(),
-        verifyRoute: (context) => const VerifyEmailView(),
+        verifyEmailRoute: (context) => const VerifyEmailView(),
       },
     ),
   );
@@ -45,14 +48,14 @@ class HomePage extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             final user = FirebaseAuth.instance.currentUser;
-            if (user == null) {
-              return const LoginView();
-            } else {
-              if (user.emailVerified == true) {
+            if (user != null) {
+              if (user.emailVerified) {
                 return const NotesView();
               } else {
                 return const VerifyEmailView();
               }
+            } else {
+              return const LoginView();
             }
           default:
             return const CircularProgressIndicator();
@@ -102,7 +105,25 @@ class _NotesViewState extends State<NotesView> {
           )
         ],
       ),
-      body: const Text('Hello World'),
+      body: const Center(
+        child: Card(
+          elevation: 0,
+          color: lightGreen,
+          child: SizedBox(
+            width: 400,
+            height: 100,
+            child: Center(
+                child: Text(
+              'Hospital Recomendation System',
+              style: TextStyle(
+                fontSize: 20,
+                color: darkGreen,
+              ),
+            )),
+          ),
+        ),
+      ),
+      // body: const Text('Hospital Recomendation System'),
     );
   }
 }
