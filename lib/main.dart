@@ -1,4 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,17 @@ void main() async {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const HomePage(),
+      home: AnimatedSplashScreen(
+        splash: const Icon(
+          Icons.local_hospital_rounded,
+          color: darkGreen,
+          size: 120,
+        ),
+        duration: 2000,
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: lightGreen,
+        nextScreen: const HomePage(),
+      ),
       routes: {
         logineRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegesterView(),
